@@ -1,6 +1,6 @@
 {
   "name": "video-modal",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Simple responsive video modal library ",
   "main": "dist/video-modal.min.js",
   "directories": {
@@ -13,8 +13,8 @@
     "video",
     "modal",
     "video",
-    "modal",
-    "youtube"
+    "youtube",
+    "responsive"
   ],
   "devDependencies": {
     "del": "^3.0.0",
