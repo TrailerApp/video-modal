@@ -35,18 +35,16 @@ function stopVideo() {
 function getVideoModalScriptPath(scripts) {
   var scriptUrl, cssUrl;
   for (var i=0; i< scripts.length; i++) {
-    console.log("loaded script: " + scripts[i].src);
     if (scripts[i].src.startsWith('https://unpkg.com/video-modal') || scripts[i].src.indexOf('dist/video-modal.min.js') != -1 ) {
       scriptUrl = scripts[i].src;
       console.log("matched script: "+ scriptUrl);
       break;
     }
   }
-  console.log("script url: ", scriptUrl);
   if (scriptUrl.indexOf('video-modal.min.js') != -1) {
     cssUrl = scriptUrl.replace('video-modal.min.js', 'video-modal.css');
   } else {
-    cssUrl = scriptUrl[scriptUrl.length-1] === '/' ? (scriptUrl + 'dist/video-modal.css') : (scriptUrl + '/dist/video-modal.css');
+    cssUrl = scriptUrl[scriptUrl.length-1] === '/' ? (scriptUrl + 'dist/video-modal.min.css') : (scriptUrl + '/dist/video-modal.min.css');
   }
   return cssUrl;
 }

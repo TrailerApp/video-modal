@@ -22,7 +22,6 @@ function playVideo(videoId) {
   var videosrc = 'https://www.youtube.com/embed/' + videoId + '?rel=0&amp;showinfo=0&autoplay=1';
   var videoIframe = '<iframe width="560" height="315" src="' + videosrc + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
   var bgVideo = videoIframe;
-    // '<iframe width="560" height="315" src="https://www.youtube.com/embed/BATiozn5zS4?rel=0&amp;showinfo=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
   htmlObject.innerHTML = bgVideo;
   videoEl.appendChild(htmlObject);
 }
@@ -37,14 +36,14 @@ function getVideoModalScriptPath(scripts) {
   for (var i=0; i< scripts.length; i++) {
     if (scripts[i].src.startsWith('https://unpkg.com/video-modal') || scripts[i].src.indexOf('dist/video-modal.min.js') != -1 ) {
       scriptUrl = scripts[i].src;
-      console.log("matched script: "+ scriptUrl);
       break;
     }
   }
+  // check if the script contains the entire path. Note: You dont need the entire path to get the latest version from unpkg.com
   if (scriptUrl.indexOf('video-modal.min.js') != -1) {
     cssUrl = scriptUrl.replace('video-modal.min.js', 'video-modal.css');
   } else {
-    cssUrl = scriptUrl[scriptUrl.length-1] === '/' ? (scriptUrl + 'dist/video-modal.css') : (scriptUrl + '/dist/video-modal.css');
+    cssUrl = scriptUrl + '/dist/video-modal.min.css';
   }
   return cssUrl;
 }
@@ -57,13 +56,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var modalElement = document.querySelector('.video--modal');
   var watchVideoBtn = document.querySelector('[data-video-id]');
   var videoId = watchVideoBtn.dataset.videoId;
-
   // When the user clicks the button, open the modal 
   watchVideoBtn.onclick = function () {
     modalElement.style.display = "block";
     playVideo(videoId);
   }
-
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modalElement) {
