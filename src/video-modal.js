@@ -32,8 +32,27 @@ function stopVideo() {
   videoEl.innerHTML = '';
 }
 
+function getVideoModalScriptPath(scripts) {
+  var scriptUrl, cssUrl;
+  for (var i=0; i< scripts.length; i++) {
+    if (scripts[i].src.startsWith('https://unpkg.com/video-modal') || scripts[i].src.indexOf('dist/video-modal.min.js') != -1 ) {
+      scriptUrl = scripts[i].src;
+      console.log("matched script: "+ scriptUrl);
+      break;
+    }
+  }
+  if (scriptUrl.indexOf('video-modal.min.js') != -1) {
+    cssUrl = scriptUrl.replace('video-modal.min.js', 'video-modal.css');
+  } else {
+    cssUrl = scriptUrl[scriptUrl.length-1] === '/' ? (scriptUrl + 'dist/video-modal.css') : (scriptUrl + '/dist/video-modal.css');
+  }
+  return cssUrl;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
-  addCss('video-modal.css');
+  var scripts = document.getElementsByTagName("script");
+  var cssUrl = getVideoModalScriptPath(scripts);
+  addCss(cssUrl);
   createModalDiv.call(this);
   var modalElement = document.querySelector('.video--modal');
   var watchVideoBtn = document.querySelector('[data-video-id]');
