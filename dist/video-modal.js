@@ -33,8 +33,8 @@ function stopVideo() {
 
 function getVideoModalScriptPath(scripts) {
   var scriptUrl, cssUrl;
-  for (var i=0; i< scripts.length; i++) {
-    if (scripts[i].src.startsWith('https://unpkg.com/video-modal') || scripts[i].src.indexOf('dist/video-modal.min.js') != -1 ) {
+  for (var i = 0; i < scripts.length; i++) {
+    if (scripts[i].src.startsWith('https://unpkg.com/video-modal') || scripts[i].src.indexOf('dist/video-modal.min.js') != -1) {
       scriptUrl = scripts[i].src;
       break;
     }
@@ -68,5 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
       stopVideo();
     }
   }
+  // When the user clicks ESC key, close it
+  window.onkeyup = function (event) {
+    if (event.keyCode == 27) {
+      modalElement.style.display = "none";
+      stopVideo();
+    }
+  }
 });
-
