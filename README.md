@@ -2,8 +2,15 @@
 
 ### Teensy js library for embedding responsive modal videos
 
+#### Features
+- Simple and light (~1.5kb)
+- Responsive video modals
+- Hit `Esc` or click outside the modal to exit
+- Easily customizable
+
+
 #### Usage
-Adding the following line to the bottom of your body tag
+Add the following line to the bottom of your body tag
 ```
 <script type="text/javascript" src="https://unpkg.com/video-modal"></script>
 ```
@@ -22,4 +29,4 @@ Only modify content that is inside the `src` folder.
 ```
 gulp build
 ```
-Minifies the files into `dist` directory. 
+Minifies the files into `dist` directory.
