@@ -9,7 +9,14 @@
 - Easily customizable
 
 
-#### Usage
+#### Usage  
+
+##### via npm  
+```
+npm i video-modal --save
+```
+
+##### via <script>  
 Add the following line to the bottom of your body tag
 ```
 <script type="text/javascript" src="https://unpkg.com/video-modal"></script>

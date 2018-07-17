@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // When the user clicks ESC key, close it
   window.onkeyup = function (event) {
+    console.log('Esc key pressed')
     if (event.keyCode == 27) {
       modalElement.style.display = "none";
       stopVideo();
